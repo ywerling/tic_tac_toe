@@ -61,6 +61,15 @@ def check_winner(row, col, player):
 
     return False
 
+def check_full_board():
+    #counts the number of empty cells
+    count = 0
+    for row in range(1, 6, 2):
+        for col in range(1, 6 ,2):
+            if game_grid[row][col] == '   ':
+                count+=1
+    return count==0
+
 player = 1
 game_is_on = True
 
@@ -74,6 +83,7 @@ while game_is_on:
             put_mark_on_grid(row, col, player)
             if check_winner(row, col, player):
                 game_is_on = False
+                print(f"Congratulations to player {player}, you won!")
             else:
                 if player == 1:
                     player = 2
@@ -84,12 +94,17 @@ while game_is_on:
     else:
         print("Invalid move, please try again (or type 'end' to forfeit).")
 
+    if check_full_board():
+        game_is_on = False
+        print("It is a draw.")
+
     if move == 'end':
         game_is_on = False
         if player == 1:
             player = 2
         else:
             player = 1
+        print(f"Congratulations to player {player}, you won!")
 
 print_grid()
-print(f"Congratulations to player {player}, you won!")
+
