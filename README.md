@@ -1,1 +1,1 @@
-Small tic tac toe game in the Python console. Day 84 of the Python 100 days of code challenge on Udemy.
+Small tic tac toe game in the Python console. Day 84 of the Python 100 days of code challenge on Udemy. Each player in turns puts a mark on the grid until a winner is found or one forfeits by typing end.
