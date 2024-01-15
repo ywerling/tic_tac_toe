@@ -1,16 +1,44 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+# grid for the tic tac toe game
+game_grid = [['   ', ' A ', ' | ', ' B ', ' | ', ' C '],
+             [' 1 ', '   ', ' | ', '   ', ' | ', '   '],
+             ['   ', '---', '-|-', '---', '-|-', '---'],
+             [' 2 ', '   ', ' | ', '   ', ' | ', '   '],
+             ['   ', '---', '-|-', '---', '-|-', '---'],
+             [' 3 ', '   ', ' | ', '   ', ' | ', '   '], ]
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+# print the grid in the console
+def print_grid():
+    for row in range(6):
+        temp = ''
+        for col in range(6):
+            temp += game_grid[row][col]
+        print(temp)
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+
+def put_mark_on_grid(row, col, player):
+    if player == 1:
+        mark = ' X '
+    else:
+        mark = ' O '
+    game_grid[row][col] = mark
+
+
+player = 2
+game_is_on = True
+
+while game_is_on:
+    if player == 1:
+        player = 2
+    else:
+        player = 1
+
+    print_grid()
+    move = input(f'Player {player}, where do you want to put your mark (column letter - row number? ').lower()
+    if move[0] in ('a', 'b', 'c') and move[1] in ('1', '2', '3'):
+        row = 2 * int(move[1]) - 1
+        col = 2 * (ord(move[0]) - 96) - 1
+        put_mark_on_grid(row, col, player)
+
+    if move == 'end':
+        game_is_on = False
