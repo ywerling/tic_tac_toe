@@ -6,10 +6,11 @@ game_grid = [['   ', ' A ', ' | ', ' B ', ' | ', ' C '],
              ['   ', '---', '-|-', '---', '-|-', '---'],
              [' 3 ', '   ', ' | ', '   ', ' | ', '   '], ]
 
+
 # print the grid in the console
 def print_grid():
     """
-    Peints the grid in the console output
+    Prints the grid in the console output
     :return: None
     """
     for row in range(6):
@@ -33,6 +34,7 @@ def put_mark_on_grid(row, col, player):
         mark = ' O '
     game_grid[row][col] = mark
 
+
 def check_cell_empty(row, col):
     """
     Checks whether a given cell is empty
@@ -41,6 +43,7 @@ def check_cell_empty(row, col):
     :return:
     """
     return game_grid[row][col] == '   '
+
 
 def check_winner(row, col, player):
     """
@@ -55,17 +58,17 @@ def check_winner(row, col, player):
     else:
         mark = ' O '
 
-    #check the row
+    # check the row
     if (game_grid[row][1] == mark) and (game_grid[row][3] == mark) and (game_grid[row][5] == mark):
         print("Winning row")
         return True
 
-    #check the column
+    # check the column
     if (game_grid[1][col] == mark) and (game_grid[3][col] == mark) and (game_grid[5][col] == mark):
         print("Winning column")
         return True
 
-    #check the diagonal
+    # check the diagonal
     if (game_grid[1][1] == mark) and (game_grid[3][3] == mark) and (game_grid[5][5] == mark):
         print("Winning diagonal")
         return True
@@ -77,18 +80,20 @@ def check_winner(row, col, player):
 
     return False
 
+
 def check_full_board():
     """
     Checks whether the board is full and no more marks can be put (used to detect a draw)
     :return: True if there are no empty cells
     """
-    #counts the number of empty cells
+    # counts the number of empty cells
     count = 0
     for row in range(1, 6, 2):
-        for col in range(1, 6 ,2):
+        for col in range(1, 6, 2):
             if game_grid[row][col] == '   ':
-                count+=1
-    return count==0
+                count += 1
+    return count == 0
+
 
 player = 1
 game_is_on = True
@@ -126,5 +131,5 @@ while game_is_on:
             player = 1
         print(f"Congratulations to player {player}, you won!")
 
+print('Final board:')
 print_grid()
-
