@@ -6,16 +6,12 @@ game_grid = [['   ', ' A ', ' | ', ' B ', ' | ', ' C '],
              ['   ', '---', '-|-', '---', '-|-', '---'],
              [' 3 ', '   ', ' | ', '   ', ' | ', '   '], ]
 
-magic_square = [[0, 0, 0, 0, 0, 0],
-                [0, 8, 0, 1, 0, 6],
-                [0, 0, 0, 0, 0, 0],
-                [0, 3, 0, 5, 0, 7],
-                [0, 0, 0, 0, 0, 0],
-                [0, 4, 0, 9, 0, 2]]
-
-
 # print the grid in the console
 def print_grid():
+    """
+    Peints the grid in the console output
+    :return: None
+    """
     for row in range(6):
         temp = ''
         for col in range(6):
@@ -24,6 +20,13 @@ def print_grid():
 
 
 def put_mark_on_grid(row, col, player):
+    """
+    Puts a mark in a box for the given player
+    :param row: row where to put the mark (1,2 or 3)
+    :param col: column where to put the mark (1,2 or 3)
+    :param player: Player ID (1 or 2)
+    :return: None
+    """
     if player == 1:
         mark = ' X '
     else:
@@ -31,9 +34,22 @@ def put_mark_on_grid(row, col, player):
     game_grid[row][col] = mark
 
 def check_cell_empty(row, col):
+    """
+    Checks whether a given cell is empty
+    :param row:  row where to put the mark (1,2 or 3)
+    :param col:  column where to put the mark (1,2 or 3)
+    :return:
+    """
     return game_grid[row][col] == '   '
 
 def check_winner(row, col, player):
+    """
+    Checks whether the player has made a row of three marks and therefore wins
+    :param row: row where to put the mark (1,2 or 3)
+    :param col: column where to put the mark (1,2 or 3)
+    :param player: Player ID (1 or 2)
+    :return: True if the given player has won otherwise False
+    """
     if player == 1:
         mark = ' X '
     else:
@@ -62,6 +78,10 @@ def check_winner(row, col, player):
     return False
 
 def check_full_board():
+    """
+    Checks whether the board is full and no more marks can be put (used to detect a draw)
+    :return: True if there are no empty cells
+    """
     #counts the number of empty cells
     count = 0
     for row in range(1, 6, 2):
